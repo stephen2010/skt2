@@ -35,6 +35,6 @@
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
   },
-  "unstable": ["broadcast-channel"],
+  "unstable": ["broadcast-channel", "kv"],
   "nodeModulesDir": true
 }
