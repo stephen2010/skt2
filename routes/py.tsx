@@ -28,7 +28,7 @@ export const handler: Handlers = {
 };
 
 export default defineRoute(async (_req, ctx) => {
-  const item = await getItem();
+//  const item = await getItem();
   // console.log("item: ", item);
   return (
     <>
