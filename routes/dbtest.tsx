@@ -1,5 +1,6 @@
 import { defineRoute, Handlers } from "$fresh/server.ts";
 import { STATUS_CODE } from "$std/http/status.ts";
+import { createItem, getItem, Item } from "../utils/db.ts";
 
 const kv = await Deno.openKv();
 
@@ -12,6 +13,7 @@ export const handler: Handlers = {
     const title = form.get("title");
     const url = form.get("url");
     console.log("title: ", title, ".    url: ", url);
+    await createItem(title, url);
 
     return new Response(null, {
       headers: {
