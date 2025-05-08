@@ -11,12 +11,13 @@ export const handler: Handlers = {
     const title = form.get("title");
     const url = form.get("url");
     console.log("title: ", title, ".    url: ", url);
-
+/*
     const itemone: Item = {
       title,
       url,
     };
     await createItem(itemone);
+*/
     return new Response(null, {
       headers: {
         location: "/py",
