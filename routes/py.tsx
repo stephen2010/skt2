@@ -1,6 +1,5 @@
 import { defineRoute, Handlers } from "$fresh/server.ts";
 import { STATUS_CODE } from "$std/http/status.ts";
-import { createItem, getItem, Item } from "../utils/db.ts";
 
 const SUBMIT_STYLES =
   "w-full text-white text-center rounded-[7px] transition duration-300 px-4 py-2 block hover:bg-white hover:text-black hover:dark:bg-gray-900 hover:dark:!text-white";
@@ -11,13 +10,7 @@ export const handler: Handlers = {
     const title = form.get("title");
     const url = form.get("url");
     console.log("title: ", title, ".    url: ", url);
-/*
-    const itemone: Item = {
-      title,
-      url,
-    };
-    await createItem(itemone);
-*/
+
     return new Response(null, {
       headers: {
         location: "/py",
@@ -28,9 +21,8 @@ export const handler: Handlers = {
 };
 
 export default defineRoute(async (_req, ctx) => {
-//  const item = await getItem();
-  // console.log("item: ", item);
-  return (
+
+return (
     <>
       <main class="flex-1 flex flex-col justify-center mx-auto w-full space-y-16 p-4 max-w-6xl">
         <div class="text-center">
