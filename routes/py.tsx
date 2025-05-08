@@ -47,7 +47,7 @@ export default defineRoute(async (_req, ctx) => {
                 htmlFor="submit_title"
                 class="block text-sm font-medium leading-6 text-gray-900"
               >
-                {item?.title}
+                {/* {item?.title} */}
               </label>
 
               <input
@@ -65,7 +65,7 @@ export default defineRoute(async (_req, ctx) => {
                 htmlFor="submit_url"
                 class="block text-sm font-medium leading-6 text-gray-900"
               >
-                {item?.url}
+                {/* {item?.url} */}
               </label>
               <input
                 id="submit_url"
