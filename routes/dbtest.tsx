@@ -41,12 +41,12 @@ export const handler: Handlers = {
     await createItem(itemone);
   const itemsKey = ["items"];
 */
-
+/*
   await kv.atomic().set(["items", "test1"], {
       title,
       url,
     }).commit();
-    
+*/
     return new Response(null, {
       headers: {
         location: "/py",
