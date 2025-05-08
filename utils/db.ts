@@ -1,3 +1,4 @@
+/*
 const kv = await Deno.openKv();
 
 export interface Item {
@@ -19,3 +20,4 @@ export async function getItem() {
   const res = await kv.get<Item>(["items","test1"]);
   return res.value;
 }
+*/
