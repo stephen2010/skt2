@@ -16,7 +16,7 @@ async function createItem(item: Item) {
 }
 
 async function getItem() {
-  const res = await kv.get<Item>(["items"]);
+  const res = await kv.get<Item>(["items", "test1"]);
   return res.value;
 }
 */
@@ -39,9 +39,10 @@ export const handler: Handlers = {
       url,
     };
     await createItem(itemone);
-*/
   const itemsKey = ["items"];
-  await kv.atomic().set(itemsKey, {
+*/
+
+  await kv.atomic().set(["items", "test1"], {
       title,
       url,
     }).commit();
