@@ -4,15 +4,14 @@ import { STATUS_CODE } from "$std/http/status.ts";
 const SUBMIT_STYLES =
   "w-full text-white text-center rounded-[7px] transition duration-300 px-4 py-2 block hover:bg-white hover:text-black hover:dark:bg-gray-900 hover:dark:!text-white";
 
-const channel = new BroadcastChannel("all_messages");
+var title = "";
+var url = "";
 
 export const handler: Handlers = {
   async POST(req, ctx) {
     const form = await req.formData();
-    const title = form.get("title");
-    const url = form.get("url");
-    console.log("title: ", title, ".    url: ", url);
-    channel.postMessage({ title, url });
+    title = form.get("title");
+    url = form.get("url");
 
     return new Response(null, {
       headers: {
@@ -24,12 +23,6 @@ export const handler: Handlers = {
 };
 
 export default defineRoute(async (_req, ctx) => {
-  // var msg = { title: "testtitle", url: "testurl" };
-  var msg = null;
-  channel.onmessage = (event: MessageEvent) => {
-    msg = event.data;
-  };
-
   return (
     <>
       <main class="flex-1 flex flex-col justify-center mx-auto w-full space-y-16 p-4 max-w-6xl">
@@ -47,7 +40,7 @@ export default defineRoute(async (_req, ctx) => {
                 htmlFor="submit_title"
                 class="block text-sm font-medium leading-6 text-gray-900"
               >
-                {msg?.title}
+                {title}
               </label>
 
               <input
@@ -65,7 +58,7 @@ export default defineRoute(async (_req, ctx) => {
                 htmlFor="submit_url"
                 class="block text-sm font-medium leading-6 text-gray-900"
               >
-                {msg?.url}
+                {url}
               </label>
               <input
                 id="submit_url"
