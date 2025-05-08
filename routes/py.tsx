@@ -4,18 +4,18 @@ import { STATUS_CODE } from "$std/http/status.ts";
 
 const SUBMIT_STYLES =
   "w-full text-white text-center rounded-[7px] transition duration-300 px-4 py-2 block hover:bg-white hover:text-black hover:dark:bg-gray-900 hover:dark:!text-white";
-/*
+
 export const handler: Handlers = {
   async POST(req, ctx) {
     const form = await req.formData();
     const title = form.get("title");
     const url = form.get("url");
-    // console.log("title: ", title, ".    url: ", url);
+    console.log("title: ", title, ".    url: ", url);
 
-    await createItem({
-      title,
-      url,
-    });
+    // await createItem({
+    //   title,
+    //   url,
+    // });
     return new Response(null, {
       headers: {
         location: "/py",
@@ -24,7 +24,7 @@ export const handler: Handlers = {
     });
   },
 };
-*/
+
 export default defineRoute(async (_req, ctx) => {
   // const item = await getItem();
   // console.log("item: ", item);
