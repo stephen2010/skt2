@@ -1,4 +1,4 @@
-const kv = await Deno.openKv();
+//const kv = await Deno.openKv();
 
 import { defineRoute, Handlers } from "$fresh/server.ts";
 import { STATUS_CODE } from "$std/http/status.ts";
