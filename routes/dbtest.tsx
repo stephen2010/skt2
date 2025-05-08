@@ -1,7 +1,7 @@
-const kv = await Deno.openKv();
-
 import { defineRoute, Handlers } from "$fresh/server.ts";
 import { STATUS_CODE } from "$std/http/status.ts";
+
+const kv = await Deno.openKv();
 
 const SUBMIT_STYLES =
   "w-full text-white text-center rounded-[7px] transition duration-300 px-4 py-2 block hover:bg-white hover:text-black hover:dark:bg-gray-900 hover:dark:!text-white";
