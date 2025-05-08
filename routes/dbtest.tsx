@@ -1,26 +1,5 @@
 const kv = await Deno.openKv();
 
-interface Item {
-  title: string;
-  url: string;
-}
-/*
-async function createItem(item: Item) {
-  const itemsKey = ["items"];
-
-  const res = await kv.atomic()
-    .set(itemsKey, item)
-    .commit();
-
-  if (!res.ok) throw new Error("Failed to create item");
-}
-
-async function getItem() {
-  const res = await kv.get<Item>(["items", "test1"]);
-  return res.value;
-}
-*/
-
 import { defineRoute, Handlers } from "$fresh/server.ts";
 import { STATUS_CODE } from "$std/http/status.ts";
 
@@ -33,20 +12,7 @@ export const handler: Handlers = {
     const title = form.get("title");
     const url = form.get("url");
     console.log("title: ", title, ".    url: ", url);
-/*
-    const itemone: Item = {
-      title,
-      url,
-    };
-    await createItem(itemone);
-  const itemsKey = ["items"];
-*/
-/*
-  await kv.atomic().set(["items", "test1"], {
-      title,
-      url,
-    }).commit();
-*/
+
     return new Response(null, {
       headers: {
         location: "/py",
@@ -57,8 +23,7 @@ export const handler: Handlers = {
 };
 
 export default defineRoute(async (_req, ctx) => {
-//  const item = await getItem();
-  // console.log("item: ", item);
+
   return (
     <>
       <main class="flex-1 flex flex-col justify-center mx-auto w-full space-y-16 p-4 max-w-6xl">
