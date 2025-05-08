@@ -8,7 +8,7 @@ export interface Item {
 }
 
 export async function createItem(item: Item) {
-  const itemsKey = ["items"];
+  const itemsKey = ["items","test1"];
 
   const res = await kv.atomic()
     .set(itemsKey, item)
@@ -18,6 +18,6 @@ export async function createItem(item: Item) {
 }
 
 export async function getItem() {
-  const res = await kv.get<Item>(["items"]);
+  const res = await kv.get<Item>(["items","test1"]);
   return res.value;
 }
