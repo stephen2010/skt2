@@ -4,7 +4,7 @@ interface Item {
   title: string;
   url: string;
 }
-
+/*
 async function createItem(item: Item) {
   const itemsKey = ["items"];
 
@@ -19,7 +19,7 @@ async function getItem() {
   const res = await kv.get<Item>(["items"]);
   return res.value;
 }
-
+*/
 
 import { defineRoute, Handlers } from "$fresh/server.ts";
 import { STATUS_CODE } from "$std/http/status.ts";
@@ -33,13 +33,19 @@ export const handler: Handlers = {
     const title = form.get("title");
     const url = form.get("url");
     console.log("title: ", title, ".    url: ", url);
-
+/*
     const itemone: Item = {
       title,
       url,
     };
     await createItem(itemone);
-
+*/
+  const itemsKey = ["items"];
+  await kv.atomic().set(itemsKey, {
+      title,
+      url,
+    }).commit();
+    
     return new Response(null, {
       headers: {
         location: "/py",
@@ -50,7 +56,7 @@ export const handler: Handlers = {
 };
 
 export default defineRoute(async (_req, ctx) => {
-  const item = await getItem();
+//  const item = await getItem();
   // console.log("item: ", item);
   return (
     <>
