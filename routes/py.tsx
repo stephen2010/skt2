@@ -41,7 +41,8 @@ export const handler: Handlers = {
     });
 */
 //    return new Response(JSON.stringify({title, url}));
-    return Response.json({title, url});
+//    return Response.json({title, url});
+    return Response.json(item1);
   },
 };
 
