@@ -5,20 +5,22 @@ export interface Item {
   url: string;
 }
 
-export async function createItem(title: String, url: String) {
-  const itemsKey = ["items", "test1"];
+export async function createItem(item: Item) {
+  const itemsKey = ["items", item.title];
 
   const res = await kv.atomic()
-    .set(itemsKey, {
-      title,
-      url,
-    })
+    .check({ key: itemsKey, versionstamp: null })
+    .set(itemsKey, item)
     .commit();
 
   if (!res.ok) throw new Error("Failed to create item");
 }
 
-export async function getItem() {
-  const res = await kv.get<Item>(["items", "test1"]);
+export async function getItem(title: string) {
+  const res = await kv.get<Item>(["items", title]);
   return res.value;
+}
+
+export async function delItem(title: string) {
+  await kv.delete(["items", title]);
 }
