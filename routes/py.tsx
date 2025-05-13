@@ -1,5 +1,5 @@
 import { defineRoute, Handlers } from "$fresh/server.ts";
-//import { STATUS_CODE } from "$std/http/status.ts";
+import { STATUS_CODE } from "$std/http/status.ts";
 
 import { Item, createItem, getItem, delItem } from "../utils/db.ts";
 
@@ -27,18 +27,16 @@ export const handler: Handlers = {
     title = form.get("title");
     url = form.get("url");
 
-    
-/*
+    await createItem({title, url});
+
     return new Response(null, {
       headers: {
         location: "/py",
       },
       status: STATUS_CODE.SeeOther,
     });
-    return new Response(JSON.stringify({title, url}));
-*/
-
-    return Response.json({title, url});
+//    return new Response(JSON.stringify({title, url}));
+//    return Response.json({title, url});
   },
 };
 
