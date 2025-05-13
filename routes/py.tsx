@@ -1,5 +1,5 @@
 import { defineRoute, Handlers } from "$fresh/server.ts";
-import { STATUS_CODE } from "$std/http/status.ts";
+//import { STATUS_CODE } from "$std/http/status.ts";
 
 import { Item, createItem, getItem, delItem } from "../utils/db.ts";
 
@@ -7,7 +7,7 @@ import { Item, createItem, getItem, delItem } from "../utils/db.ts";
 const SUBMIT_STYLES =
   "w-full text-white text-center rounded-[7px] transition duration-300 px-4 py-2 block hover:bg-white hover:text-black hover:dark:bg-gray-900 hover:dark:!text-white";
 
-var title = " ";
+var title = "";
 var url = "";
 
 export const handler: Handlers = {
@@ -28,7 +28,7 @@ export const handler: Handlers = {
 */
     const user = (await req.json()) as Item;
     console.log("Item: ", user);
-    await createItem(user);
+//    await createItem(user);
 
     return new Response(JSON.stringify(user));
   },
