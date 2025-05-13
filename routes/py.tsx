@@ -31,7 +31,7 @@ export const handler: Handlers = {
       "title": title,
       "url": url,
     } as Item;
-//    await createItem(item1);
+    await createItem(item1);
 /*
     return new Response(null, {
       headers: {
