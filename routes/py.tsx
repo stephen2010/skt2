@@ -12,18 +12,7 @@ var url = "";
 
 export const handler: Handlers = {
   async POST(req, _ctx) {
-
     const form = await req.formData();
-/*
-  title, 3
-  url, 4
-    for (var [t, u] of form.entries()) {
-      console.log(t + ", " + u);
-      title = t;
-      url = u;
-    }
-*/
-
     title = form.get("title");
     url = form.get("url");
 

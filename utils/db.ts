@@ -7,13 +7,18 @@ export interface Item {
 
 export async function createItem(item: Item) {
   const itemsKey = ["items", item.title];
-
+/*
   const res = await kv.atomic()
     .check({ key: itemsKey, versionstamp: null })
     .set(itemsKey, item)
     .commit();
+*/
+//  const res = await kv.set(itemsKey, item);
+  const res = await kv.atomic()
+    .set(itemsKey, item)
+    .commit();
 
-  if (!res.ok) throw new Error("Failed to create item");
+  if (!res) throw new Error("Failed to create item");
 }
 
 export async function getItem(title: string) {
