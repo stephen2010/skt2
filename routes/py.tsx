@@ -44,7 +44,7 @@ export const handler: Handlers = {
   },
 };
 
-export default defineRoute(async (_req, ctx) => {
+export default defineRoute(async (_req, _ctx) => {
   return (
     <>
       <main class="flex-1 flex flex-col justify-center mx-auto w-full space-y-16 p-4 max-w-6xl">
