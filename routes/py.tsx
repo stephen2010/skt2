@@ -27,6 +27,7 @@ export const handler: Handlers = {
     });
 */
     const user = (await req.json()) as Item;
+    console.log("Item: ", user);
     await createItem(user);
 
     return new Response(JSON.stringify(user));
