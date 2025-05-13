@@ -13,12 +13,13 @@ export async function createItem(item: Item) {
     .set(itemsKey, item)
     .commit();
 */
-//  const res = await kv.set(itemsKey, item);
+  await kv.set(itemsKey, item);
+/*
   const res = await kv.atomic()
     .set(itemsKey, item)
     .commit();
-
   if (!res) throw new Error("Failed to create item");
+*/
 }
 
 export async function getItem(title: string) {
