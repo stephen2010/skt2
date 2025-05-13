@@ -31,16 +31,17 @@ export const handler: Handlers = {
       "title": title,
       "url": url,
     } as Item;
-    await createItem(item1);
-
+//    await createItem(item1);
+/*
     return new Response(null, {
       headers: {
         location: "/py",
       },
       status: STATUS_CODE.SeeOther,
     });
+*/
 //    return new Response(JSON.stringify({title, url}));
-//    return Response.json({title, url});
+    return Response.json({title, url});
   },
 };
 
