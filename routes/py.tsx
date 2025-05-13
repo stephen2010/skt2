@@ -2,6 +2,11 @@ import { defineRoute, Handlers } from "$fresh/server.ts";
 //import { STATUS_CODE } from "$std/http/status.ts";
 
 //import { Item, createItem, getItem, delItem } from "../utils/db.ts";
+interface Item {
+  title: string;
+  url: string;
+}
+
 
 const kv = await Deno.openKv();
 
@@ -11,7 +16,7 @@ const SUBMIT_STYLES =
 var title = "";
 var url = "";
 
-export const handler: Handlers = {
+export const handler: Handlers<Item | null> = {
   async POST(req, _ctx) {
     const form = await req.formData();
     title = form.get("title");
@@ -20,8 +25,7 @@ export const handler: Handlers = {
     const item1 = {
       "title": title,
       "url": url,
-    };
-//    } as Item;
+    } as Item;
 //    await createItem(item1);
     const itemsKey = ["items", item.title];
     const ok = await kv.atomic().set(itemsKey, item1).commit();
