@@ -1,4 +1,4 @@
-const kv = await Deno.openKv();
+export const kv = await Deno.openKv();
 
 export interface Item {
   title: string;
