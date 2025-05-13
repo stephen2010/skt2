@@ -12,13 +12,20 @@ var url = "";
 
 export const handler: Handlers = {
   async POST(req, ctx) {
-/*
+
     const form = await req.formData();
-    title = form.get("title");
-    url = form.get("url");
+    for (var [t, u] of formData.entries()) {
+//      console.log(key + ", " + value);
+      await createItem({t, u});
+      title = t;
+      url = u;
+    }
 
-    await createItem({title, url});
+//    title = form.get("title");
+//    url = form.get("url");
 
+    
+/*
     return new Response(null, {
       headers: {
         location: "/py",
@@ -26,11 +33,7 @@ export const handler: Handlers = {
       status: STATUS_CODE.SeeOther,
     });
 */
-    const user = (await req.json()) as Item;
-    console.log("Item: ", user);
-//    await createItem(user);
-
-    return new Response(JSON.stringify(user));
+    return new Response(JSON.stringify({title, url}));
   },
 };
 
