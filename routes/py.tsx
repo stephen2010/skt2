@@ -27,7 +27,10 @@ export const handler: Handlers = {
     title = form.get("title");
     url = form.get("url");
 
-    const item1 = {title, url} as Item;
+    const item1 = {
+      "title": title,
+      "url": url,
+    } as Item;
     await createItem(item1);
 
     return new Response(null, {
