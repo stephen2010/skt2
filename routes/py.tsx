@@ -14,7 +14,7 @@ export const handler: Handlers = {
   async POST(req, ctx) {
 
     const form = await req.formData();
-    for (var [t, u] of formData.entries()) {
+    for (var [t, u] of form.entries()) {
 //      console.log(key + ", " + value);
 //      await createItem({t, u});
       title = t;
