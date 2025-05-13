@@ -14,15 +14,18 @@ export const handler: Handlers = {
   async POST(req, ctx) {
 
     const form = await req.formData();
+/*
+  title, 3
+  url, 4
     for (var [t, u] of form.entries()) {
       console.log(t + ", " + u);
-//      await createItem({t, u});
       title = t;
       url = u;
     }
+*/
 
-//    title = form.get("title");
-//    url = form.get("url");
+    title = form.get("title");
+    url = form.get("url");
 
     
 /*
@@ -32,8 +35,10 @@ export const handler: Handlers = {
       },
       status: STATUS_CODE.SeeOther,
     });
-*/
     return new Response(JSON.stringify({title, url}));
+*/
+
+    return Response.json({title, url});
   },
 };
 
