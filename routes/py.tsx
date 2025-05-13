@@ -1,8 +1,9 @@
 import { defineRoute, Handlers } from "$fresh/server.ts";
-import { STATUS_CODE } from "$std/http/status.ts";
+//import { STATUS_CODE } from "$std/http/status.ts";
 
-import { Item, createItem, getItem, delItem } from "../utils/db.ts";
+//import { Item, createItem, getItem, delItem } from "../utils/db.ts";
 
+const kv = await Deno.openKv();
 
 const SUBMIT_STYLES =
   "w-full text-white text-center rounded-[7px] transition duration-300 px-4 py-2 block hover:bg-white hover:text-black hover:dark:bg-gray-900 hover:dark:!text-white";
@@ -19,8 +20,12 @@ export const handler: Handlers = {
     const item1 = {
       "title": title,
       "url": url,
-    } as Item;
-    await createItem(item1);
+    };
+//    } as Item;
+//    await createItem(item1);
+    const itemsKey = ["items", item.title];
+    const ok = await kv.atomic().set(itemsKey, item1).commit();
+    if (!ok) throw new Error("Something went wrong.");
 /*
     return new Response(null, {
       headers: {
