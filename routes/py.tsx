@@ -16,7 +16,7 @@ export const handler: Handlers = {
     const form = await req.formData();
     for (var [t, u] of formData.entries()) {
 //      console.log(key + ", " + value);
-      await createItem({t, u});
+//      await createItem({t, u});
       title = t;
       url = u;
     }
