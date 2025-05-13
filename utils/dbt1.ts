@@ -7,3 +7,8 @@ const prefs = {
 };
 
 const result = await kv.set(["preferences", "ada"], prefs);
+
+const entry = await kv.get(["preferences", "ada"]);
+console.log(entry.key);
+console.log(entry.value);
+console.log(entry.versionstamp);
